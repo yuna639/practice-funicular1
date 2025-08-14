@@ -1,6 +1,6 @@
 # ![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
 
-Alright — I’ll merge your **template structure** with the **details of your ETL & visualisation work** using your three datasets (**FEATURES**, **STORES**, and **SALES**) and the seven charts you generated.
+
 I’ll also keep it professional and detailed, so it reads like a polished GitHub README.
 
 ---![alt text](image.png)
