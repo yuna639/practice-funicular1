@@ -1,7 +1,7 @@
 # ![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
 
 
-I’ll also keep it professional and detailed, so it reads like a polished GitHub README.
+
 
 ---![alt text](image.png)
 
