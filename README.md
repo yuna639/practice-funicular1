@@ -1,72 +1,203 @@
 # ![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
 
-## Template Instructions
+Alright — I’ll merge your **template structure** with the **details of your ETL & visualisation work** using your three datasets (**FEATURES**, **STORES**, and **SALES**) and the seven charts you generated.
+I’ll also keep it professional and detailed, so it reads like a polished GitHub README.
 
-Welcome,
+---![alt text](image.png)
 
-This is the Code Institute student template for the Data Analytics capstone project. We have preinstalled all of the tools you need to get started. It's perfectly okay to use this template as the basis for your project submissions. Click the `Use this template` button above to get started.
+# Project XYZ – Retail Sales ETL & Visualisation
 
-You can safely delete the Template Instructions section of this README.md file and modify the remaining paragraphs for your own project. Please do read the Template Instructions at least once, though! It contains some important information about the IDE and the extensions we use.
+## Overview
 
-## How to use this repo
+Retail Sales ETL and Visualization Project
 
-1. Use this template to create your GitHub project repo. Click the **Use this template** button, then click **Create a new repository**.
 
-1. Copy the URL of your repository to your clipboard.
+Project XYZ is a comprehensive retail sales data analysis project that performs **ETL (Extract, Transform, Load)** on three related datasets — **FEATURES**, **STORES**, and **SALES** — to produce actionable business insights through data visualisation.
 
-1. In VS Code, select **File** -> **Open Folder**.
+The focus was on **data cleaning, transformation, and exploration** using **Matplotlib** and **Seaborn** — without applying any machine learning algorithms — in order to understand sales behaviour, department performance, holiday effects, markdown impacts, and the influence of economic factors.
 
-1. Select your `vscode-projects` folder, then click the **Select Folder** button on Windows, or the **Open** button on Mac.
+---
 
-1. From the top menu in VS Code, select **Terminal** > **New Terminal** to open the terminal.
+## Dataset Content
 
-1. In the terminal, type `git clone` followed by the URL of your GitHub repository. Then hit **Enter**. This command will download all the files in your GitHub repository into your vscode-projects folder.
+1. **STORES**
 
-1. In VS Code, select **File** > **Open Folder** again.
+   * Store number (Store)
+   * Store type
+   * Store size
 
-1. This time, navigate to and select the folder for the project you just downloaded. Then, click **Select Folder**.
+2. **FEATURES**
 
-1. A virtual environment is necessary when working with Python projects to ensure each project's dependencies are kept separate from each other. You need to create your virtual environment, also called a venv, and then ensure that it is activated any time you return to your workspace.
-Click the gear icon in the lower left-hand corner of the screen to open the Manage menu and select **Command Palette** to open the VS Code command palette.
+   * Store
+   * Date
+   * Temperature
+   * Fuel Price
+   * CPI (Consumer Price Index)
+   * Unemployment rate
+   * MarkDown variables (1–5)
+   * IsHoliday flag
 
-1. In the command palette, type: *create environment* and select **Python: Create Environment…**
+3. **SALES**
 
-1. Choose **Venv** from the dropdown list.
+   * Store
+   * Dept
+   * Date
+   * Weekly\_Sales
+   * IsHoliday flag
 
-1. Choose the Python version you installed earlier. Currently, we recommend Python 3.12.8
+---
 
-1. **DO NOT** click the box next to `requirements.txt`, as you need to do more steps before you can install your dependencies. Click **OK**.
+## Business Requirements
 
-1. You will see a `.venv` folder appear in the file explorer pane to show that the virtual environment has been created.
+* Understand overall sales trends across time.
+* Measure the impact of markdowns on weekly sales.
+* Compare performance between departments.
+* Analyse sales during holiday and non-holiday periods.
+* Explore the relationship between economic indicators and sales patterns.
 
-1. **Important**: Note that the `.venv` folder is in the `.gitignore` file so that Git won't track it.
+---
 
-1. Return to the terminal by clicking on the TERMINAL tab, or click on the **Terminal** menu and choose **New Terminal** if no terminal is currently open.
+## Hypothesis & Validation
 
-1. In the terminal, use the command below to install your dependencies. This may take several minutes.
+1. **Holiday weeks drive higher sales** → Validate by comparing average weekly sales for holiday vs non-holiday periods.
+2. **Markdowns increase sales but only up to a point** → Validate with scatter/line plots between markdown levels and weekly sales.
+3. **Economic factors influence retail spending** → Validate by plotting correlations between CPI, fuel prices, unemployment, and weekly sales.
 
- ```console
- pip3 install -r requirements.txt
- ```
+---
 
-1. Open the `jupyter_notebooks` directory, and click on the notebook you want to open.
+## Project Plan
 
-1. Click the **kernel** button and choose **Python Environments**.
+**1. Extract**
 
-Note that the kernel says `Python 3.12.8` as it inherits from the venv, so it will be Python-3.12.8 if that is what is installed on your PC. To confirm this, you can use the command below in a notebook code cell.
+* Imported three CSV datasets (**STORES**, **FEATURES**, **SALES**) into Pandas DataFrames.
 
-```console
-! python --version
+**2. Transform**
+
+* Converted date columns to datetime format.
+* Merged datasets on `Store` and `Date` for consolidated analysis.
+* Filled missing values for numeric columns using median values.
+* Created derived features (Year, Month, Week number, Holiday indicators).
+
+**3. Load**
+
+* Final cleaned dataset stored in Pandas for visualisation.
+
+**4. Analyse & Visualise**
+
+* Created visualisations in Matplotlib and Seaborn for:
+
+  * Weekly sales trends
+  * Markdown impact
+  * Department performance
+  * Holiday vs non-holiday analysis
+  * Economic indicators correlation
+  * Initial EDA distributions and pair plots
+  * ETL flow diagram
+
+---
+
+## Rationale: Mapping Business Requirements to Visualisations
+
+| Business Requirement   | Visualisation                   | Rationale                              |
+| ---------------------- | ------------------------------- | -------------------------------------- |
+| Sales over time        | Line plot of total weekly sales | Shows seasonal demand changes          |
+| Markdown impact        | Scatter/line plot               | Identifies optimal discount levels     |
+| Department performance | Bar chart                       | Highlights strong and weak departments |
+| Holiday effect         | Side-by-side bar/line plot      | Quantifies holiday sales boost         |
+| Economic influence     | Multiple line plots             | Shows macroeconomic correlation        |
+
+---
+
+## Analysis Techniques Used
+
+* **Descriptive statistics** – Mean, median, variance for sales distribution.
+* **Correlation analysis** – Pearson correlation between economic variables and sales.
+* **Time-series visualisation** – Weekly trends with moving averages.
+
+**Limitations**
+
+* No predictive modelling performed — analysis is purely descriptive.
+* Economic indicators available at a weekly resolution; daily-level analysis not possible.
+
+---
+
+## Ethical Considerations
+
+* Data contains no personal identifiers, ensuring privacy compliance.
+* Avoided demographic-based conclusions to prevent bias.
+
+---
+
+## Data Visualisations & Analysis
+
+### 1. Weekly Sales Overview
+
+![Weekly Sales Overview](9ad841e3-df3a-4299-b9be-afa25c9bb9a1.png)
+Shows overall sales trends across time, with visible peaks around holiday seasons.
+
+### 2. Impact of Markdowns on Sales
+
+![Markdown Impact](02807bb1-6466-4b37-9c29-9f94b84d03d4.png)
+Illustrates the relationship between promotional markdowns and sales volume.
+
+### 3. Department-Level Performance
+
+![Department Insights](544369e6-ceff-40ee-bb98-644b0f31f222.png)
+Ranks departments by their average sales, highlighting consistently strong performers.
+
+### 4. Economic Trends vs Sales
+
+![Economic Trends](601b5f2a-4fc3-48ec-9917-b249fbf9558f.png)
+Plots sales against CPI, fuel prices, and unemployment to identify correlations.
+
+### 5. ETL Process Flow Diagram
+
+![ETL Flow](461c4dfe-1e8d-43ca-9cd1-cbc802c9060b.png)
+Visual representation of the Extract, Transform, Load pipeline used.
+
+### 6. Holiday Sales Analysis
+
+![Holiday Sales](7ef67bc6-66e6-4d56-82a5-350597ebe1c8.png)
+Comparison of holiday and non-holiday weekly sales.
+
+### 7. Initial Data Exploration
+
+![Data Exploration](0f1bc10a-c44e-40a1-8f78-f5415ddc88e6.png)
+EDA plots showing distributions and correlations before deeper analysis.
+
+---
+
+## Main Data Analysis Libraries
+
+* **Pandas** – Data cleaning, merging, and aggregation.
+* **Matplotlib** – Custom visualisations for trends and comparisons.
+* **Seaborn** – Statistical plots and aesthetic styling.
+* **NumPy** – Numerical computations.
+
+---
+
+## Development Roadmap
+
+* Expand analysis to include store size/type as segmentation factors.
+* Automate ETL pipeline for faster updates with new data.
+* Integrate interactive visualisations using Plotly or Dash.
+
+---
+
+## Deployment
+
+This is a **local analysis project**; run it with:
+
+```bash
+pip install pandas matplotlib seaborn numpy
+python analysis.py
 ```
 
-## Deployment Reminders
+---
 
-* Set the `.python-version` Python version to a [Heroku-22](https://devcenter.heroku.com/articles/python-support#supported-runtimes) stack currently supported version that closest matches what you used in this project.
-* The project can be deployed to Heroku using the following steps.
+## Credits
 
-1. Log in to Heroku and create an App
-2. At the **Deploy** tab, select **GitHub** as the deployment method.
-3. Select your repository name and click **Search**. Once it is found, click **Connect**.
-4. Select the branch you want to deploy, then click **Deploy Branch**.
-5. The deployment process should happen smoothly if all deployment files are fully functional. Click the button **Open App** at the top of the page to access your App.
-6. If the slug size is too large, then add large files not required for the app to the `.slugignore` file.
+* Dataset: Public Walmart Retail Sales dataset (if applicable)
+* Visualisation approach inspired by Matplotlib and Seaborn documentation.
+
+
